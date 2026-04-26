@@ -1,0 +1,21 @@
+Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It emphasizes code readability and simplicity, using indentation to define code blocks instead of curly braces.
+
+Python supports multiple programming paradigms including procedural, object-oriented, and functional programming. It is dynamically typed, meaning variable types are determined at runtime rather than compile time.
+
+Key Python data types include integers, floats, strings, lists, tuples, dictionaries, and sets. Lists are mutable ordered collections, while tuples are immutable. Dictionaries store key-value pairs and provide fast lookups.
+
+Python functions are defined using the def keyword. Functions are first-class objects, meaning they can be passed as arguments, returned from other functions, and assigned to variables. Lambda functions allow creating anonymous functions in a single line.
+
+Object-oriented programming in Python uses classes defined with the class keyword. Python supports inheritance, polymorphism, and encapsulation. The __init__ method acts as a constructor to initialize object attributes.
+
+Python's standard library is extensive, covering file I/O, networking, databases, regular expressions, and much more. Popular third-party libraries include NumPy for numerical computing, Pandas for data analysis, Matplotlib for visualization, and Flask/Django for web development.
+
+List comprehensions are a concise way to create lists: [expression for item in iterable if condition]. Dictionary and set comprehensions follow similar patterns.
+
+Exception handling in Python uses try, except, finally, and raise keywords. This allows programs to handle errors gracefully without crashing.
+
+Python uses modules and packages to organize code. The import statement loads modules. The pip package manager installs third-party packages from PyPI (Python Package Index).
+
+Python generators use the yield keyword to produce values lazily, saving memory when working with large datasets. Decorators are functions that modify other functions, commonly used for logging, authentication, and caching.
+
+Virtual environments (venv) isolate project dependencies, preventing conflicts between different projects that require different library versions.

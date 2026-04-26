@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TopicMind — AI Quiz Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>TopicMind</span>
+    </div>
+    <span class="nav-badge">RAG-powered</span>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- Hero -->
+  <section class="hero" id="home-screen">
+    <h1>Learn anything.<br>Test yourself.</h1>
+    <p class="hero-sub">Enter any topic — our AI retrieves knowledge, generates questions, and teaches you through instant feedback.</p>
+
+    <div class="search-box">
+      <input type="text" id="topic-input" placeholder="Enter a topic e.g. Python, World War 2, DNA..." autocomplete="off" />
+      <button id="start-btn" onclick="startQuiz()">Generate quiz</button>
+    </div>
+
+    <div class="chips">
+      <span class="chip" onclick="setTopic('Python basics')">Python basics</span>
+      <span class="chip" onclick="setTopic('Machine learning')">Machine learning</span>
+      <span class="chip" onclick="setTopic('World War 2')">World War 2</span>
+      <span class="chip" onclick="setTopic('Solar system')">Solar system</span>
+      <span class="chip" onclick="setTopic('Indian history')">Indian history</span>
+      <span class="chip" onclick="setTopic('DNA and genetics')">DNA and genetics</span>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon purple"></div>
+        <div class="feature-title">RAG pipeline</div>
+        <div class="feature-desc">Retrieves relevant knowledge chunks before generating questions</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teal"></div>
+        <div class="feature-title">AI feedback</div>
+        <div class="feature-desc">Claude evaluates every answer and explains mistakes in depth</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon coral"></div>
+        <div class="feature-title">Adaptive difficulty</div>
+        <div class="feature-desc">Questions go from easy to hard, building your understanding</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading -->
+  <section class="loading-screen" id="loading-screen" style="display:none">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <div class="loader-title">Building your quiz</div>
+      <div class="loader-steps">
+        <div class="step" id="step1">Retrieving knowledge chunks...</div>
+        <div class="step" id="step2">Embedding context vectors...</div>
+        <div class="step" id="step3">Generating questions with AI...</div>
+        <div class="step" id="step4">Preparing your quiz...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz-screen" style="display:none">
+    <div class="quiz-header">
+      <div class="quiz-topic" id="quiz-topic-label"></div>
+      <div class="quiz-meta">
+        <span id="q-counter">Question 1 of 5</span>
+        <div class="score-pills">
+          <span class="pill green" id="correct-count">0 correct</span>
+          <span class="pill red" id="wrong-count">0 wrong</span>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="rag-context" id="rag-context">
+      <div class="rag-label">RAG context retrieved</div>
+      <div class="rag-text" id="rag-text-display"></div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <div class="q-number" id="q-number">Question 1</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options" id="options-list"></div>
+      <div class="feedback-box" id="feedback-box" style="display:none"></div>
+    </div>
+
+    <div class="quiz-actions" id="quiz-actions" style="display:none">
+      <button class="btn-next" id="next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results-screen" style="display:none">
+    <div class="results-card">
+      <div class="results-icon" id="results-icon"></div>
+      <div class="results-score" id="results-score"></div>
+      <div class="results-label" id="results-label"></div>
+      <div class="results-topic" id="results-topic"></div>
+
+      <div class="results-stats">
+        <div class="stat"><div class="stat-val" id="res-correct"></div><div class="stat-lbl">Correct</div></div>
+        <div class="stat"><div class="stat-val" id="res-wrong"></div><div class="stat-lbl">Wrong</div></div>
+        <div class="stat"><div class="stat-val">5</div><div class="stat-lbl">Total</div></div>
+      </div>
+
+      <div class="results-msg" id="results-msg"></div>
+
+      <div class="results-actions">
+        <button class="btn-primary" onclick="resetQuiz()">Try another topic</button>
+        <button class="btn-secondary" onclick="retryTopic()">Retry this topic</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
